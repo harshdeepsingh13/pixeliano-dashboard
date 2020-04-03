@@ -12,7 +12,7 @@
   align-items: center;
   animation-name: modalEntry;
   animation-duration: 0.3s;
-  transition: all 2s ease;
+  transition: all 1s ease;
 }
 
 @keyframes modalEntry {
@@ -30,11 +30,13 @@
   min-height: 5em;
   min-width: 1em;
   width: 100%;
+  transition: all 1s ease;
 
   .close-button {
     position: absolute;
     top: 0;
     right: 0;
+    margin: 1em
   }
 
   img {
@@ -51,6 +53,21 @@
     .caption {
       font-size: 1.15em;
       font-weight: bold;
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 1100px) {
+  .modal {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .modal {
+    width: 35%;
+    .post-container{
+      max-height: 35em;
     }
   }
 }
