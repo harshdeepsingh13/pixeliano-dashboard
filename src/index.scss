@@ -1,13 +1,39 @@
+@import "App";
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  min-height: 100vh;
+  font-size: 12pt;
+  font-weight: 200;
+  line-height: 1.65;
+  color: #c4c4c4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  background: rgba(48, 130, 128, 1);
+  background: -moz-linear-gradient(top, rgba(48, 130, 128, 1) 0%, rgba(33, 46, 59, 1) 82%, rgba(33, 46, 59, 1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(48, 130, 128, 1)), color-stop(82%, rgba(33, 46, 59, 1)), color-stop(100%, rgba(33, 46, 59, 1)));
+  background: -webkit-linear-gradient(top, rgba(48, 130, 128, 1) 0%, rgba(33, 46, 59, 1) 82%, rgba(33, 46, 59, 1) 100%);
+  background: -o-linear-gradient(top, rgba(48, 130, 128, 1) 0%, rgba(33, 46, 59, 1) 82%, rgba(33, 46, 59, 1) 100%);
+  background: -ms-linear-gradient(top, rgba(48, 130, 128, 1) 0%, rgba(33, 46, 59, 1) 82%, rgba(33, 46, 59, 1) 100%);
+  background: linear-gradient(to bottom, rgba(48, 130, 128, 1) 0%, rgba(33, 46, 59, 1) 82%, rgba(33, 46, 59, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#308280', endColorstr='#212e3b', GradientType=0);
+}
+
+h2 {
+  font-size: 1.25em;
+  text-align: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: $transition-time;
 }

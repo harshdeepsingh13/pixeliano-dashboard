@@ -1,11 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.scss';
+import {BrowserRouter} from "react-router-dom";
+import AppRouter from "./App.router";
 
-function App() {
-  return (
-    <></>
-  );
-}
+const App = () => {
+	return (
+		<BrowserRouter>
+			<AppRouter/>
+		</BrowserRouter>
+	);
+};
 
 export default App;

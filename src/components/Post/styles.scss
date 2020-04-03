@@ -1,0 +1,40 @@
+@import "../../App";
+
+.post-container {
+  border-radius: $border-radius;
+  border: thin solid $grey-dark-bb;
+  overflow: hidden;
+  background-color: $grey-translucent;
+  margin-bottom: 2em;
+
+  .image-container {
+
+    .image {
+      width: 100%;
+      min-height: 5em;
+    }
+  }
+
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em;
+    text-align: center;
+
+    .tag {
+      font-style: italic;
+      margin-right: 1em;
+
+      &:before {
+        content: '#';
+        padding: 0 2px 0 0;
+      }
+    }
+  }
+
+  .caption {
+    margin: 1em;
+    text-align: center;
+    font-style: italic;
+  }
+}

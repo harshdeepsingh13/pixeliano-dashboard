@@ -1,0 +1,25 @@
+@import '../../App';
+
+.avatar-container {
+  //width: 50%;
+  border-radius: 100%;
+  overflow: hidden;
+  margin: 0 0 2em 0;
+  padding: 0.5em;
+  border: solid 1px $secondary-dark;
+  background-color: $grey-translucent;
+
+  .avatar {
+    border-radius: 100%;
+    display: block;
+    width: 10em;
+    min-width: 10em;
+    min-height: 10em;
+    /*display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    align-items: center;
+    align-content: center;*/
+  }
+}

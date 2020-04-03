@@ -1,0 +1,57 @@
+@import "../../App";
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-name: modalEntry;
+  animation-duration: 0.3s;
+  transition: all 2s ease;
+}
+
+@keyframes modalEntry {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+}
+
+.modal {
+  background-color: $grey-translucent;
+  position: relative;
+  min-height: 5em;
+  min-width: 1em;
+  width: 100%;
+
+  .close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  img {
+    width: 100%;
+    min-height: 5em;
+  }
+
+  .post-container {
+    max-width: 99%;
+    margin: 0 auto;
+    max-height: 40em;
+    overflow: auto;
+
+    .caption {
+      font-size: 1.15em;
+      font-weight: bold;
+    }
+  }
+}
+

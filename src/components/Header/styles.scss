@@ -1,0 +1,13 @@
+@import "../../App";
+
+.header-container {
+  padding: 4em 0 2em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .socialLinks-container {
+    display: flex;
+  }
+}

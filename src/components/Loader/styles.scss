@@ -1,0 +1,39 @@
+@import "../../App";
+
+.loader-container {
+  background-color: $dusk;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  width: fit-content;
+  border-radius: 100px;
+  .loader {
+    animation: colorChanging 2s infinite, spin 0.7s infinite;
+  }
+
+  @keyframes colorChanging {
+    0% {
+      color: $salmon
+    }
+    50% {
+      color: $secondary-dark
+    }
+    80% {
+      color: $primary-yellowish-dark
+    }
+    100% {
+      color: $salmon
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
