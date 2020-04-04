@@ -6,3 +6,9 @@
   flex-direction: column;
   align-items: center;
 }
+
+@media only screen and (min-width: 1024px) {
+  .allPosts-container {
+    flex-basis: 45%;
+  }
+}
