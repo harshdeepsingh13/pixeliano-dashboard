@@ -1,4 +1,5 @@
 @import "../../App";
+@import "../../scorllBars";
 
 .modal-container {
   background-color: rgba(0, 0, 0, 0.9);
@@ -48,7 +49,8 @@
     max-width: 99%;
     margin: 0 auto;
     max-height: 40em;
-    overflow: auto;
+    overflow-y: auto;
+    @include scrollbars(0.6em, $secondary-dark, $secondary);
 
     .caption {
       font-size: 1.15em;

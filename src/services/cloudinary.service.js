@@ -19,8 +19,10 @@ export const getCloudinaryImageUrl = ({
 	if (transformations && Object.keys(transformations).length !== 0) {
 		const transformationArray = [];
 		for (let [key, value] of Object.entries(transformations)) {
+			console.log("transformationsMapping[key]", transformationsMapping[key])
 			transformationArray.push(`${transformationsMapping[key]}_${value}`);
 		}
+		console.log(`${config.cloudinary.secureDeliveryURL}${transformationArray.join(',')}/${publicId}`, transformations, )
 		return `${config.cloudinary.secureDeliveryURL}${transformationArray.join(',')}/${publicId}`;
 	} else {
 		return `${config.cloudinary.secureDeliveryURL}${publicId}`;

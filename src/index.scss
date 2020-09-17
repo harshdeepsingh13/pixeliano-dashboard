@@ -1,4 +1,5 @@
 @import "App";
+@import "scorllBars";
 
 body {
   margin: 0;
@@ -19,7 +20,13 @@ body {
   background: -ms-linear-gradient(top, rgba(48, 130, 128, 1) 0%, rgba(33, 46, 59, 1) 82%, rgba(33, 46, 59, 1) 100%);
   background: linear-gradient(to bottom, rgba(48, 130, 128, 1) 0%, rgba(33, 46, 59, 1) 82%, rgba(33, 46, 59, 1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#308280', endColorstr='#212e3b', GradientType=0);
+  @include scrollbars(0.6em, $secondary-dark, $secondary);
+
+  #modal-root {
+    @include scrollbars(0.6em, $secondary-dark, $secondary);
+  }
 }
+
 
 h2 {
   font-size: 1.25em;
