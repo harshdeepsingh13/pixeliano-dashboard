@@ -65,7 +65,7 @@ const AllPosts = props => {
 					'scroll',
 					handleLoadMorePosts
 				);
-				setPostsOffset((prevOffset) => prevOffset + config.getPostsLimit)
+				setPostsOffset((prevOffset) => +prevOffset + config.getPostsLimit)
 			}
 		},
 		[posts, totalPostsCount, setPostsOffset, getPostsStatus.status]

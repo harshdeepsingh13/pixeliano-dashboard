@@ -81,5 +81,5 @@ export default {
 		apiURL: process.env.REACT_APP_CLOUDINARY_API_URL,
 		uploadPreset: `${process.env.REACT_APP_CLOUDINARY_API_UPLOAD_PRESET}${mode}`,
 	},
-	getPostsLimit: process.env.REACT_APP_CLOUDINARY_API_GET_POSTS_LIMIT
+	getPostsLimit: +process.env.REACT_APP_CLOUDINARY_API_GET_POSTS_LIMIT
 }
