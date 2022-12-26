@@ -1,19 +1,34 @@
 const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
 
+//dotenv
 require('dotenv').config();
 
-const app = express();
+const {logger} = require('./config/config');
+const v1Routes = require('./api/v1');
+const errorMiddleware = require('./middlewares/errorMiddleware');
+const requestCallMiddleware = require('./middlewares/requestCallMiddleware');
 
-const cors = require('cors');
-const morgan = require('morgan');
-const path = require("path");
+const app = express();
+const port = process.env.PORT || 8080;
 
 //middlewares
-app.use(morgan('dev'));
-app.use(cors());
+app.use(require('morgan')('dev'));
+app.use(require('cors')());
+app.use(requestCallMiddleware);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
-const port = process.env.PORT || 8001;
+//mongodb connection
+require('./config/mongoose')();
 
+//API routes
+const apiRoutes = express.Router();
+app.use('/api', apiRoutes);
+v1Routes(apiRoutes);
+
+console.log("yo1", process.env.MODE)
 
 //react
 if (process.env.MODE === 'production') {
@@ -24,4 +39,9 @@ if (process.env.MODE === 'production') {
 	})
 }
 
-app.listen(port, () => console.log(`Server is running on port - ${port}`));
+//error handler
+app.use(errorMiddleware);
+
+
+
+app.listen(port, () => logger.info(`Server is running on port - ${port}`));

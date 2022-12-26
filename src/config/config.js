@@ -63,11 +63,7 @@ export default {
 			borderRadius: '3px'
 		}
 	},
-	apiUrl: mode === modes[1] ?
-		apiUrl.herokuDev :
-		mode === modes[2] ?
-			apiUrl.herokuProd :
-			apiUrl.homeLocalHostIp,
+	apiUrl: "/api/v1/listing/",
 	status: {
 		started: 'started',
 		success: 'success',
