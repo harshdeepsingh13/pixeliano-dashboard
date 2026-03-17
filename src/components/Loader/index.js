@@ -1,11 +1,7 @@
-import React from 'react';
-import './styles.scss';
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from 'prop-types';
-import {library} from "@fortawesome/fontawesome-svg-core";
-import {faCircleNotch} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
-library.add(faCircleNotch);
+import './styles.scss';
 
 const Loader = ({showLoader}) => {
 	return (
@@ -15,7 +11,7 @@ const Loader = ({showLoader}) => {
 				<div className="loader-container">
 					<FontAwesomeIcon
 						className={'loader'}
-						icon={'circle-notch'}
+						icon={faCircleNotch}
 						size={'2x'}
 					/>
 				</div>

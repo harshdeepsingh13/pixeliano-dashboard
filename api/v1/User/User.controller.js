@@ -79,7 +79,15 @@ exports.verifyEmailController = async (req, res, next) => {
 
 exports.signInUserController = async (req, res, next) => {
   try {
-    const {email, password} = req.query;
+    const {email: bodyEmail, password: bodyPassword} = req.body || {};
+    const {email: queryEmail, password: queryPassword} = req.query;
+    const email = bodyEmail || queryEmail;
+    const password = bodyPassword || queryPassword;
+
+    if (req.method === 'GET') {
+      logger.warn('[User.controller.js] Deprecated GET /signIn used. Prefer POST /signIn with request body.');
+    }
+
     if (!email || !password) {
       req.error = {
         status: 400,
@@ -111,7 +119,7 @@ exports.signInUserController = async (req, res, next) => {
       );
     } else {
       req.error = {
-        status: '401',
+        status: 401,
         message: responseMessages[401],
       };
       return next(new Error());

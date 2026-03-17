@@ -1,8 +1,8 @@
-import React, {useCallback, useState} from 'react';
-import './styles.scss';
 import PropTypes from 'prop-types';
-import {getCloudinaryImageUrl} from "../../services/cloudinary.service";
+import React, { useCallback, useState } from 'react';
+import { getCloudinaryImageUrl } from "../../services/cloudinary.service";
 import Modal from "../Modal";
+import './styles.scss';
 
 const Post = ({
 	              imageShortName,
@@ -11,8 +11,8 @@ const Post = ({
 	              tags,
 	              postId
               }) => {
-
 	const [showPictureModal, setShowPictureModal] = useState(false);
+
 
 	const getPictureUrl = useCallback(
 		(quality = 100) => {
@@ -26,22 +26,11 @@ const Post = ({
 					});
 				}
 				default:
-					console.log('no image provider');
 					return null;
 			}
 		},
-		[imageShortName]
+		[imageProvider, imageShortName]
 	);
-
-	/*React.useEffect(
-		() => {
-			if(!showPictureModal){
-				document.getElementById('modal-root').childNodes[0] && document.getElementById('modal-root').removeChild(document.getElementsByClassName('modal-container')[0]);
-				document.getElementsByTagName('body')[0].style.overflow = 'auto';
-			}
-		},
-		[showPictureModal]
-	);*/
 
 	return (
 		<div className="post-container" onClick={() => setShowPictureModal(true)}>
@@ -52,7 +41,7 @@ const Post = ({
 				>
 					<div className="post-container">
 						<div className="image-container">
-							<img src={getPictureUrl()} alt="Post Image" className={"image"}/>
+							<img src={getPictureUrl()} alt="Post" className={"image"}/>
 						</div>
 						<div className="caption">
 							{
@@ -75,7 +64,7 @@ const Post = ({
 				</Modal>
 			}
 			<div className="image-container">
-				<img src={getPictureUrl(25)} alt="Post Image" className="image"/>
+				<img src={getPictureUrl(25)} alt="Post" className="image"/>
 			</div>
 			<div className="caption">
 				{

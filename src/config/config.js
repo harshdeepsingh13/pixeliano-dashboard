@@ -1,14 +1,6 @@
-const apiUrl = {
-	localhost: '',
-	homeLocalHostIp: '',
-	herokuDev: process.env.REACT_APP_API_URL_HEROKU_DEV,
-	herokuProd: process.env.REACT_APP_API_URL_HEROKU_PROD,
-};
-const modes = ['dev', 'herokudev', 'prod'];
-
 const mode = process.env.REACT_APP_MODE;
 
-export default {
+const appConfig = {
 	socialPlatforms: [
 		{
 			type: 'email',
@@ -78,4 +70,6 @@ export default {
 		uploadPreset: `${process.env.REACT_APP_CLOUDINARY_API_UPLOAD_PRESET}${mode}`,
 	},
 	getPostsLimit: +process.env.REACT_APP_CLOUDINARY_API_GET_POSTS_LIMIT
-}
+};
+
+export default appConfig;

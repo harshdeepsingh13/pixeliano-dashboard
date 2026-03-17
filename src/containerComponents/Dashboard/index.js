@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import './styles.scss';
-import PropTypes from 'prop-types';
-import Header from "../../components/Header";
+import { useEffect, useState } from 'react';
 import AllPosts from "../../components/AllPosts";
+import Header from "../../components/Header";
+import './styles.scss';
 
 const Dashboard = props => {
 	const [opacity, setOpacity] = useState(0);
@@ -21,7 +20,5 @@ const Dashboard = props => {
 		</div>
 	)
 };
-
-Dashboard.propTypes = {};
 
 export default Dashboard

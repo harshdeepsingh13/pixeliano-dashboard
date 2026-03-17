@@ -1,9 +1,7 @@
-import React from 'react';
-import './styles.scss';
-import PropTypes from 'prop-types';
-import Avatar from "../Avatar";
 import config from '../../config/config';
+import Avatar from "../Avatar";
 import SocialLink from "../SociaLink";
+import './styles.scss';
 
 const Header = props => {
 	return (
@@ -30,7 +28,5 @@ const Header = props => {
 
 	)
 };
-
-Header.propTypes = {};
 
 export default Header

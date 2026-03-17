@@ -1,7 +1,5 @@
-import React from 'react';
-import './styles.scss';
-import PropTypes from 'prop-types';
 import logo from '../../static/images/Logo.png';
+import './styles.scss';
 
 const Avatar = props => {
 	return (
@@ -10,7 +8,5 @@ const Avatar = props => {
 		</div>
 	)
 };
-
-Avatar.propTypes = {};
 
 export default Avatar

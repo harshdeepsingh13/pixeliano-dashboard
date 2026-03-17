@@ -1,35 +1,30 @@
-import React, {useEffect} from 'react';
-import './styles.scss';
+import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
+import React, { useEffect, useRef } from 'react';
 import * as ReactDOM from "react-dom";
-import {library} from "@fortawesome/fontawesome-svg-core";
-import {faTimesCircle} from "@fortawesome/free-regular-svg-icons";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import config from "../../config/config";
+import './styles.scss';
 
-library.add(faTimesCircle);
-
-const root = document.getElementById('root');
 const modalRoot = document.getElementById('modal-root');
 
 const Modal = props => {
-
-	const childContainer = document.createElement('div');
-	childContainer.className = 'modal-container';
-
-	const close = () => {
-		modalRoot.childNodes[0] && modalRoot.removeChild(childContainer);
-		document.getElementsByTagName('body')[0].style.overflow = 'auto';
+	const childContainerRef = useRef(null);
+	if (!childContainerRef.current) {
+		childContainerRef.current = document.createElement('div');
+		childContainerRef.current.className = 'modal-container';
 	}
 
 	useEffect(
 		() => {
+			const childContainer = childContainerRef.current;
 			modalRoot.appendChild(childContainer);
-			console.log('dom', document.getElementsByTagName('body'))
 			document.getElementsByTagName('body')[0].style.overflow = 'hidden';
 			return () => {
-				console.log('destructor');
-				close()
+				if (modalRoot.contains(childContainer)) {
+					modalRoot.removeChild(childContainer);
+				}
+				document.getElementsByTagName('body')[0].style.overflow = 'auto';
 			}
 		},
 		[]
@@ -41,16 +36,14 @@ const Modal = props => {
 				className="modal"
 				onClick={(e) => {
 					e.stopPropagation();
-					console.log('click', props.onClose);
 					props.onClose();
-					// close();
 				}}
 			>
 				<span
 					className="close-button"
 				>
 					<FontAwesomeIcon
-						icon={['far', 'times-circle']}
+						icon={faTimesCircle}
 						size={'2x'}
 						color={config.styleConstants.text.greyLightText}
 						className="close-icon"
@@ -60,7 +53,7 @@ const Modal = props => {
 					props.children
 				}
 			</div>,
-			childContainer
+			childContainerRef.current
 		)
 	)
 };

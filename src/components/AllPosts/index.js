@@ -1,10 +1,9 @@
-import React, {useEffect, useState, useCallback} from 'react';
-import './styles.scss';
-import PropTypes from 'prop-types';
+import { useCallback, useEffect, useState } from 'react';
 import config from '../../config/config';
-import {getPosts as getPostsService} from '../../services/axios.services';
-import Post from "../Post";
+import { getPosts as getPostsService } from '../../services/axios.services';
 import Loader from "../Loader";
+import Post from "../Post";
+import './styles.scss';
 
 const AllPosts = props => {
 
@@ -16,34 +15,17 @@ const AllPosts = props => {
 		message: ''
 	});
 
-	const getCount = () => {
-		const countObject = {};
-		if (posts.length) {
-			posts.forEach(post => {
-				if (countObject[post.postId]) {
-					countObject[post.postId] = countObject[post.postId] + 1;
-				} else {
-					countObject[post.postId] = 1;
-				}
-			})
-		}
-		return countObject
-	};
-
 	const getPosts = useCallback(
 		() => {
 			(async () => {
 				try {
-					setGetPostsStatus({...getPostsStatus, status: config.status.started});
+					setGetPostsStatus((prevStatus) => ({...prevStatus, status: config.status.started}));
 					const {data: {data}} = await getPostsService(postsOffset);
-					if (postsOffset === 0 || totalPostsCount !== data.totalPosts) {
-						setTotalPostsCount(data.totalPosts);
-					}
+					setTotalPostsCount(data.totalPosts);
 					setPosts((prevPosts) => [...prevPosts, ...data.posts]);
-					setGetPostsStatus({...getPostsStatus, status: config.status.success});
+					setGetPostsStatus((prevStatus) => ({...prevStatus, status: config.status.success}));
 				} catch (e) {
-					setGetPostsStatus({...getPostsStatus, status: config.status.failed});
-					console.log('error', e);
+					setGetPostsStatus((prevStatus) => ({...prevStatus, status: config.status.failed}));
 				}
 			})()
 		},
@@ -57,8 +39,6 @@ const AllPosts = props => {
 				clientHeight,
 				scrollTop
 			} = document.documentElement;
-
-			/*console.log('scrollHeight', scrollHeight, 'clientHeight', clientHeight, 'scrollTop', scrollTop, getPostsStatus.status, scrollTop + clientHeight + 500 >= scrollHeight && posts.length < totalPostsCount && getPostsStatus.status !== config.status.started, posts.length, totalPostsCount);*/
 
 			if (scrollTop + clientHeight + 500 >= scrollHeight && posts.length < totalPostsCount && getPostsStatus.status !== config.status.started) {
 				window.removeEventListener(
@@ -117,7 +97,5 @@ const AllPosts = props => {
 		</div>
 	)
 };
-
-AllPosts.propTypes = {};
 
 export default AllPosts

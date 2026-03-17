@@ -14,5 +14,6 @@ app.post('/register', registerController);
 app.put('/saveDefaultTags', authenticationMiddleware, saveDefaultTagsController);
 app.get('/verifyEmail', verifyEmailController);
 app.get('/signIn', signInUserController);
+app.post('/signIn', signInUserController);
 
 module.exports = app;

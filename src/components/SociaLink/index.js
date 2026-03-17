@@ -1,23 +1,24 @@
-import React from 'react';
-import './styles.scss';
+import { faInstagram, faPinterest } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from 'prop-types';
-import {library} from "@fortawesome/fontawesome-svg-core";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
-import {faInstagram, faPinterest} from "@fortawesome/free-brands-svg-icons";
-import config from '../../config/config';
+import './styles.scss';
 
-library.add(faEnvelope, faInstagram, faPinterest);
+const iconByType = {
+	email: faEnvelope,
+	instagram: faInstagram,
+	pinterest: faPinterest,
+};
 
 const SocialLink = ({
 	                    type,
 	                    link
                     }) => {
 	return (
-		<a className="socialLink-container" href={type === 'email' ? `mailto:${link}` : link} target={'_blank'}>
+		<a className="socialLink-container" href={type === 'email' ? `mailto:${link}` : link} target={'_blank'} rel="noopener noreferrer">
 			<FontAwesomeIcon
 				className="icon"
-				icon={type === 'email' ? 'envelope' : ['fab', type]}
+				icon={iconByType[type] || faEnvelope}
 				size={"2x"}
 			/>
 		</a>
